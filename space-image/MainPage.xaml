@@ -7,7 +7,7 @@
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="NASA image of the day!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
-        <Label FontSize="16" Padding="30,3,0,0">
+        <Label FontSize="16" Padding="30,0,0,0">
             <Label.FormattedText>
                 <FormattedString>
                     <FormattedString.Spans>
@@ -16,7 +16,7 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <Image x:Name="imageOfTheDay" Source="https://fkomarek.eu/logo.jpg" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFit"/>
+        <Image x:Name="imageOfTheDay" Source="" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="Fill"/>
         <Label FontSize="16" Padding="30,2,30,0">
             <Label.FormattedText>
                 <FormattedString>
@@ -26,11 +26,20 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <Label FontSize="16" Padding="30,0,30,90">
+        <Label FontSize="16" Padding="30,0,30,0">
             <Label.FormattedText>
                 <FormattedString>
                     <FormattedString.Spans>
                         <Span Text="Created by Filip Komárek"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label FontSize="16" Padding="30,0,30,90">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Version: 0.1 (1)"/>
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>
