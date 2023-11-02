@@ -7,6 +7,11 @@
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="NASA image of the day!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
+
+        <DatePicker x:Name="datePicker" DateSelected="DatePicker_DateSelected" />
+
+        <Button Text="Reload" Clicked="RefreshButton_Clicked" />
+
         <Label FontSize="16" Padding="30,0,0,0">
             <Label.FormattedText>
                 <FormattedString>
@@ -16,6 +21,7 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        
         <Image x:Name="imageOfTheDay" Source="" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="Fill"/>
         <Label FontSize="16" Padding="30,2,30,0">
             <Label.FormattedText>
@@ -39,7 +45,7 @@
             <Label.FormattedText>
                 <FormattedString>
                     <FormattedString.Spans>
-                        <Span Text="Version: 0.1 (1)"/>
+                        <Span Text="Version: 0.2 (2)"/>
                     </FormattedString.Spans>
                 </FormattedString>
             </Label.FormattedText>
