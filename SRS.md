@@ -13,8 +13,8 @@ Pro vývojáře a uživatele software
 
 ## Kontakty
 Email: filip@fkomarek.eu  
-Telegram: fkomarek
-Discord: filip2cz 
+Telegram: fkomarek  
+Discord: filip2cz  
 Mastodon: @filip2cz@mastodon.arch-linux.cz  
 Instagram: @filip2czprivate  
 SINET: hyper -> 9385 -> 2000
