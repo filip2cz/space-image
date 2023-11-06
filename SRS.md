@@ -1,7 +1,7 @@
 # Status client - Specifikace požadavků
 Filip Komárek  
-verze 0.3  
-2023/02/20
+verze 1.0  
+2023/06/11
 
 ## Úvod
 
