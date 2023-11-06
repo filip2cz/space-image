@@ -1,4 +1,4 @@
-# Status client - Specifikace požadavků
+# Space Image - Specifikace požadavků
 Filip Komárek  
 verze 1.0  
 2023/06/11
