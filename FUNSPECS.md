@@ -1,7 +1,7 @@
 # Funkční specifikace
 
-- verze: 1.0
-- datum: 24. října 2023
+- verze: 1.1
+- datum: 7. listopadu 2023
 - autor: Filip Komárek
 
 ## O tomto dokumentu
@@ -10,10 +10,10 @@
 Dokument je určen pro uživatele, kteří chtějí lépe pochopit fungování tohoto programu.
 
 ## Použití
-Aplikace ukáže uživateli dnešní image of the day od agentury NASA a dovolí mu podívat se na obrázky z předchozích dnů.
+Aplikace ukáže uživateli dnešní image of the day od agentury NASA a dovolí mu podívat se na obrázky z předchozích dnů. D8le mu ukáže popis k obrázku a umožní mu pomocí dvou tlačítek stáhnout nebo sdílet obrázek.
 
 ## Architektura software
-Aplikace si buď vezme datum od uživatele, nebo aktuální datum a pomocí NASA API si získá odkaz na tuto fotku, kterou pak zobrazí.
+Aplikace si buď vezme aktuální datum nebo datum od uživatele a pomocí NASA API si získá odkaz na tuto fotku, kterou pak zobrazí společně s popisem obrázku.
 
 ## Otevřené otázky
 - vzhled
