@@ -162,7 +162,7 @@ namespace space_image
                 {
                     try
                     {
-                        response = client.GetStringAsync(APIUrl).Result;
+                        response = await client.GetStringAsync(APIUrl);
                         ApiJsonOutput = response;
                         ApiSuccefull = true;
                         i = 3;
