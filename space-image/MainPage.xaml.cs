@@ -107,6 +107,19 @@ namespace space_image
                 OnPropertyChanged(nameof(InputDay));
             }
         }
+        private string _apiKey;
+        public string ApiKey
+        {
+            get
+            {
+                return _apiKey;
+            }
+            set
+            {
+                _apiKey = value;
+                OnPropertyChanged(nameof(ApiKey));
+            }
+        }
         public MainPage()
         {
             InitializeComponent();
@@ -115,8 +128,6 @@ namespace space_image
             {
                 Text = "Data refresh"
             };
-
-            refreshButton.Clicked += RefreshButton_Clicked;
 
             DatePicker datePicker = new DatePicker
             {
@@ -152,7 +163,8 @@ namespace space_image
             Debug.WriteLine("GetImage() started");
 
             // get Image of the day
-            string APIUrl = $"https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date={InputYear}-{InputMonth}-{InputDay}";
+            ApiKey = "DEMO_KEY";
+            string APIUrl = $"https://api.nasa.gov/planetary/apod?api_key={ApiKey}&date={InputYear}-{InputMonth}-{InputDay}";
             string response = string.Empty;
 
             int i = 0;
@@ -200,6 +212,27 @@ namespace space_image
         }
         private async void RefreshButton_Clicked(object sender, EventArgs e)
         {
+            LoadData();
+        }
+        private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            DateTime selectedDate = e.NewDate;
+            DateTime minDate = new DateTime(1995, 5, 16);
+            DateTime maxDate = DateTime.Now;
+
+            if (selectedDate < minDate || selectedDate > maxDate)
+            {
+                DisplayAlert("Error", "The selected date must be between May 16, 1995 and today.", "OK");
+
+                datePicker.Date = maxDate;
+            }
+            else
+            {
+                LoadData();
+            }
+        }
+        public async Task LoadData()
+        {
             DateTime selectedDate = datePicker.Date;
 
             string year = selectedDate.Year.ToString();
@@ -220,19 +253,6 @@ namespace space_image
             imageOfTheDay.Source = ImageUrl;
             // https://stackoverflow.com/questions/38910715/show-image-from-url-with-xamarin-forms
             imageDate.Text = $"{ImageDateString}";
-        }
-        private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
-        {
-            DateTime selectedDate = e.NewDate;
-            DateTime minDate = new DateTime(1995, 5, 16);
-            DateTime maxDate = DateTime.Now;
-
-            if (selectedDate < minDate || selectedDate > maxDate)
-            {
-                DisplayAlert("Error", "The selected date must be between May 16, 1995 and today.", "OK");
-
-                datePicker.Date = maxDate;
-            }
         }
 
     }

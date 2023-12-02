@@ -10,7 +10,9 @@
 
         <DatePicker x:Name="datePicker" DateSelected="DatePicker_DateSelected" />
 
+        <!--
         <Button Text="Reload" Clicked="RefreshButton_Clicked" />
+        -->
 
         <Label FontSize="16" Padding="30,0,0,0">
             <Label.FormattedText>
