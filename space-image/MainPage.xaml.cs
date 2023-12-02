@@ -68,6 +68,19 @@ namespace space_image
                 OnPropertyChanged(nameof(ImageUrl));
             }
         }
+        private string _imageDescriptionString;
+        public string ImageDescriptionString
+        {
+            get
+            {
+                return _imageDescriptionString;
+            }
+            set
+            {
+                _imageDescriptionString = value;
+                OnPropertyChanged(nameof(ImageDescriptionString));
+            }
+        }
         private string _inputYear;
         public string InputYear
         {
@@ -202,6 +215,7 @@ namespace space_image
                 string ImageDateStringRaw = jsonObj["date"].Value<string>();
                 ImageDateString = $"Date: {ImageDateStringRaw}";
                 ImageUrl = jsonObj["url"].Value<string>();
+                ImageDescriptionString = jsonObj["explanation"].Value<string>();
             }
             else
             {
@@ -210,10 +224,12 @@ namespace space_image
                 ImageDateString = "Loading failed";
             }
         }
+        /*
         private async void RefreshButton_Clicked(object sender, EventArgs e)
         {
             LoadData();
         }
+        */
         private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
         {
             DateTime selectedDate = e.NewDate;
@@ -253,6 +269,7 @@ namespace space_image
             imageOfTheDay.Source = ImageUrl;
             // https://stackoverflow.com/questions/38910715/show-image-from-url-with-xamarin-forms
             imageDate.Text = $"{ImageDateString}";
+            imageDescription.Text = ImageDescriptionString;
         }
 
     }

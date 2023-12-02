@@ -3,55 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="space_image.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="NASA image of the day!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
+    <ScrollView>
 
-        <DatePicker x:Name="datePicker" DateSelected="DatePicker_DateSelected" />
+        <StackLayout>
 
-        <!--
+            <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                <Label Text="NASA image of the day!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+
+            <DatePicker x:Name="datePicker" DateSelected="DatePicker_DateSelected" />
+
+            <!--
         <Button Text="Reload" Clicked="RefreshButton_Clicked" />
         -->
 
-        <Label FontSize="16" Padding="30,0,0,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span x:Name="imageDate" Text="Loading"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        
-        <Image x:Name="imageOfTheDay" Source="" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="Fill"/>
-        <Label FontSize="16" Padding="30,2,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="This app or the developer of this app is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the NASA."/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label FontSize="16" Padding="30,0,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Created by Filip Komárek"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label FontSize="16" Padding="30,0,30,90">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Version: 0.2 (2)"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+            <Label FontSize="16" Padding="30,0,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span x:Name="imageDate" Text="Loading"/>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Image x:Name="imageOfTheDay" Source="" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="Fill"/>
+
+            <StackLayout>
+                <Label x:Name="imageDescription" FontSize="16" Padding="10,0,10,0" Text=""/>
+            </StackLayout>
+
+            <StackLayout>
+                <Label FontSize="16" Padding="30,2,30,0" Text="This app or the developer of this app is not affiliated, associated, authorized, endorsed by, or in any way officially connected with the NASA."/>
+                <Label FontSize="16" Padding="30,2,30,0" Text="Created by Filip Komárek"/>
+                <Label FontSize="16" Padding="30,2,30,0" Text="Version: 0.2 (2)"/>
+            </StackLayout>
+
+        </StackLayout>
+
+    </ScrollView>
 
 </ContentPage>
