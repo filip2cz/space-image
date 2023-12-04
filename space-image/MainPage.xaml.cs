@@ -270,6 +270,9 @@ namespace space_image
             // https://stackoverflow.com/questions/38910715/show-image-from-url-with-xamarin-forms
             imageDate.Text = $"{ImageDateString}";
             imageDescription.Text = ImageDescriptionString;
+
+            // disabled bcs it is broken
+            imageDescription.Text = "description is temporatily disabled";
         }
 
     }
