@@ -165,7 +165,7 @@ namespace space_image
             InputMonth = month;
             InputDay = day;
 
-            GetImage();
+            LoadData();
             imageOfTheDay.Source = ImageUrl;
             // https://stackoverflow.com/questions/38910715/show-image-from-url-with-xamarin-forms
             imageDate.Text = $"{ImageDateString}";
