@@ -11,6 +11,8 @@ using Xamarin.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Xml.Linq;
+using System.IO;
+using Xamarin.Essentials;
 
 namespace space_image
 {
@@ -140,6 +142,11 @@ namespace space_image
             Button refreshButton = new Button
             {
                 Text = "Data refresh"
+            };
+
+            Button downloadButton = new Button
+            {
+                Text = "Download"
             };
 
             DatePicker datePicker = new DatePicker
@@ -273,6 +280,64 @@ namespace space_image
 
             // disabled bcs it is broken
             imageDescription.Text = "description is temporatily disabled";
+        }
+
+        // https://stackoverflow.com/questions/59632849/xamarin-forms-how-to-download-an-image-save-it-locally-and-display-it-on-scree
+        // with some ChatGPT and my brain
+        static class ImageDownloader
+        {
+            static readonly HttpClient _client = new HttpClient();
+
+            public static async Task<byte[]> DownloadImage(string imageUrl)
+            {
+                if (!imageUrl.Trim().StartsWith("https", StringComparison.OrdinalIgnoreCase))
+                    throw new Exception("iOS and Android Require Https");
+
+                return await _client.GetByteArrayAsync(imageUrl);
+            }
+
+            public static async Task SaveToDownloads(string imageFileName, byte[] imageData)
+            {
+                try
+                {
+                    var status = await Permissions.RequestAsync<Permissions.StorageWrite>();
+                    if (status == PermissionStatus.Granted)
+                    {
+                        var downloadsDirectory = Path.Combine(FileSystem.AppDataDirectory, "Downloads");
+                        Directory.CreateDirectory(downloadsDirectory);
+
+                        var filePath = Path.Combine(downloadsDirectory, imageFileName);
+
+                        using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                        {
+                            await fileStream.WriteAsync(imageData, 0, imageData.Length);
+                        }
+                        Debug.WriteLine("SaveToDownloads(): Image saved");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("SaveToDownloads(): Missing permissions");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"SaveToDownloads(): Error: {ex.Message}");
+                }
+            }
+        }
+        private async void DownloadButton_Clicked(object sender, EventArgs e)
+        {
+            Debug.WriteLine("DownloadButton_Clicked(): Starting Image download");
+            Debug.WriteLine(ImageUrl);
+            try
+            {
+                byte[] imageData = await ImageDownloader.DownloadImage(ImageUrl);
+                await ImageDownloader.SaveToDownloads($"NASA-{InputYear}-{InputMonth}-{InputDay}", imageData);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"DownloadButton_Clicked(): Error: {ex.Message}");
+            }
         }
 
     }

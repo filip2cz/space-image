@@ -14,8 +14,8 @@
             <DatePicker x:Name="datePicker" DateSelected="DatePicker_DateSelected" />
 
             <!--
-        <Button Text="Reload" Clicked="RefreshButton_Clicked" />
-        -->
+            <Button Text="Reload" Clicked="RefreshButton_Clicked" />
+            -->
 
             <Label FontSize="16" Padding="30,0,0,0">
                 <Label.FormattedText>
@@ -38,6 +38,8 @@
                 <Label FontSize="16" Padding="30,2,30,0" Text="Created by Filip Komárek"/>
                 <Label FontSize="16" Padding="30,2,30,0" Text="Version: 0.2 (2)"/>
             </StackLayout>
+
+            <Button Text="Download" Clicked="DownloadButton_Clicked" />
 
         </StackLayout>
 
