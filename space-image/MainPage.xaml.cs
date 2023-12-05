@@ -156,6 +156,12 @@ namespace space_image
 
             Debug.WriteLine(datePicker.Date);
 
+            /*
+            // ask for write to internal storage permission
+            // https://docs.microsoft.com/en-us/xamarin/essentials/permissions?tabs=android
+            Permissions.RequestAsync<Permissions.StorageWrite>();
+            */
+            
             DateTime selectedDate = datePicker.Date;
 
             string year = selectedDate.Year.ToString();
@@ -184,6 +190,14 @@ namespace space_image
 
             // get Image of the day
             ApiKey = "DEMO_KEY";
+
+            Debug.WriteLine("-----------------------");
+            Debug.WriteLine("GetImage()");
+            Debug.WriteLine(InputYear);
+            Debug.WriteLine(InputMonth);
+            Debug.WriteLine(InputDay);
+            Debug.WriteLine("-----------------------");
+            
             string APIUrl = $"https://api.nasa.gov/planetary/apod?api_key={ApiKey}&date={InputYear}-{InputMonth}-{InputDay}";
             string response = string.Empty;
 
@@ -263,6 +277,7 @@ namespace space_image
             string day = selectedDate.Day.ToString().PadLeft(2, '0');
 
             Debug.WriteLine("-----------------------");
+            Debug.WriteLine("LoadData()");
             Debug.WriteLine(year);
             Debug.WriteLine(month);
             Debug.WriteLine(day);
@@ -272,7 +287,8 @@ namespace space_image
             InputMonth = month;
             InputDay = day;
 
-            GetImage();
+            await GetImage();
+            
             imageOfTheDay.Source = ImageUrl;
             // https://stackoverflow.com/questions/38910715/show-image-from-url-with-xamarin-forms
             imageDate.Text = $"{ImageDateString}";
